@@ -71,7 +71,16 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                 Expanded(
                     child: BlocConsumer<GetByBreedCubit, GetByBreedState>(
                   listener: (context, state) {
-                    // TODO: implement listener
+                    if (state is GetByBreedError) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(state.error),
+                        backgroundColor: Color.fromRGBO(103, 0, 29, 1),
+                      ));
+                    } else if (state is GetByBreedLoaded) {
+                      if (!state.list) {
+                        imageDialog(context, state.currentlink, true);
+                      }
+                    } else {}
                   },
                   builder: (context, state) {
                     if (state is GetByBreedLoading && state.list) {

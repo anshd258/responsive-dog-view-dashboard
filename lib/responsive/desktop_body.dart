@@ -45,7 +45,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       ));
                     } else if (state is GetByBreedLoaded) {
                       if (!state.list) {
-                        imageDialog(context, state.currentlink, false);
+                        imageDialog(context, state.currentlink, true);
                       }
                     } else {}
                   },
